@@ -19,3 +19,8 @@ detalles. Esta base de datos será luego expuesta y administrada vía web.
 
 4. **`propiedades`**  
    Describe las propiedades, asociadas a `propietarios` con `id_propietario` y se actualizan automáticamente si el `id` de `propietario` cambia.
+   
+![](https://github.com/N1ckyto/Inmobiliaria_WEB2/blob/main/Inmobiliria_db.png)
+
+# Estudiantes
+Escudero Nicolas - Barberia Facundo
