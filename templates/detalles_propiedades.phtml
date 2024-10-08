@@ -1,0 +1,13 @@
+<?php require 'templates/layout/header.phtml';
+$propiedad = $tasks ?>
+
+<h1>Detalles de la Propiedad</h1>
+
+<p><strong>Ubicación:</strong> <?php echo $propiedad->ubicacion; ?></p>
+<p><strong>Metros cuadrados:</strong> <?php echo $propiedad->m2; ?> m²</p>
+<p><strong>Modalidad:</strong> <?php echo $propiedad->modalidad; ?></p>
+<p><strong>Precio inicial:</strong> $<?php echo $propiedad->precio_inicial; ?></p>
+<p><strong>Precio flexible:</strong> <?php echo $propiedad->precio_flex ? 'Sí' : 'No'; ?></p>
+<p><strong>Propietario:</strong> <?php echo $propiedad->nombre . ' ' . $propiedad->apellido; ?></p>
+<a href="propiedades">Volver a la lista de propiedades</a>
+<?php require 'templates/layout/footer.phtml' ?>
