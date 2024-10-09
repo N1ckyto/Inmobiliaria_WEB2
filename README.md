@@ -19,3 +19,7 @@ detalles. Esta base de datos será luego expuesta y administrada vía web.
 
 # Estudiantes
 Escudero Nicolas - Barberia Facundo
+
+
+
+$2y$10$c0vX38PKVKvh9O9nCeHQjO00.tZ4VJSiAYZ4R7CtEGO02GWrjl0dm

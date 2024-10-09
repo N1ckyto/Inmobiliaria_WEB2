@@ -21,7 +21,7 @@ class AuthController
 
     public function login()
     {
-        if (!isset($_POST['email']) || empty($_POST['email'])) {
+        if (!isset($_POST['usuario']) || empty($_POST['usuario'])) {
             return $this->view->showLogin('Falta completar el nombre de usuario');
         }
 
@@ -29,23 +29,23 @@ class AuthController
             return $this->view->showLogin('Falta completar la contraseña');
         }
 
-        $email = $_POST['email'];
+        $user = $_POST['usuario'];
         $password = $_POST['password'];
 
         // Verificar que el usuario está en la base de datos
-        $userFromDB = $this->model->getUserByEmail($email);
+        $userFromDB = $this->model->getUserByEmail($user);
 
-        // password: 123456
-        // $userFromDB->password: $2y$10$xQop0wF1YJ/dKhZcWDqHceUM96S04u73zGeJtU80a1GmM.H5H0EHC
+        // password: admin
+        // $userFromDB->password: $2y$10$c0vX38PKVKvh9O9nCeHQjO00.tZ4VJSiAYZ4R7CtEGO02GWrjl0dm
         if ($userFromDB && password_verify($password, $userFromDB->password)) {
             // Guardo en la sesión el ID del usuario
             session_start();
             $_SESSION['ID_USER'] = $userFromDB->id;
-            $_SESSION['EMAIL_USER'] = $userFromDB->email;
+            $_SESSION['NAME_USER'] = $userFromDB->usuario;
             $_SESSION['LAST_ACTIVITY'] = time();
 
-            // Redirijo al home
-            header('Location: ' . BASE_URL);
+            // Redirijo a propiedades
+            header('Location: ' . BASE_URL . 'propiedades');
         } else {
             return $this->view->showLogin('Credenciales incorrectas');
         }
