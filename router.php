@@ -1,8 +1,10 @@
 <?php
 require_once 'libs/response.php';
 require_once 'app/middlewares/session.auth.middleware.php';
-require_once 'app/controllers/task.controller.php';
+require_once 'app/controllers/property.controller.php';
 require_once 'app/controllers/auth.controller.php';
+require_once 'app/controllers/owner.controller.php';
+require_once 'app/controllers/category.controller.php';
 
 define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
 
@@ -18,18 +20,33 @@ $params = explode('/', $action);
 switch ($params[0]) {
     case 'home':
         sessionAuthMiddleware($res);
-        $controller = new TaskController($res);
+        $controller = new PropertyController($res);
         $controller->showHome();
         break;
     case 'propiedades':
         sessionAuthMiddleware($res);
-        $controller = new TaskController($res);
-        $controller->showTasks();
+        $controller = new PropertyController($res);
+        $controller->showProperties();
         break;
-    case 'detalle':
+    case 'propietarios':
         sessionAuthMiddleware($res);
-        $controller = new TaskController($res);
+        $controller = new OwnerController($res);
+        $controller->showOwners();
+        break;
+    case 'categorias':
+        sessionAuthMiddleware($res);
+        $controller = new CategoryController($res);
+        $controller->showCategories();
+        break;
+    case 'detallePropiedad':
+        sessionAuthMiddleware($res);
+        $controller = new PropertyController($res);
         $controller->showDetails($params[1]);
+        break;
+    case 'detallePropietario':
+        sessionAuthMiddleware($res);
+        $controller = new OwnerController($res);
+        $controller->viewOwner($params[1]);
         break;
     case 'showLogin':
         $controller = new AuthController();

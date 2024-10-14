@@ -10,34 +10,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
-    <title>inmobiliaria</title>
+    <title>Inmobiliaria FN</title>
 </head>
 
-<body>
+<body class="bg-dark d-flex flex-column min-vh-100">
     <!-- main header -->
-    <header>
-        <nav class="navbar navbar-expand-lg bg-light">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="home">INMOBILIARIA - FN</a>
+    <header >
+        <nav class="navbar navbar-expand-lg bg-dark">
+            <div class="container-fluid ">
+                <a class="navbar-brand text-light h1" href="home">INMOBILIARIA - FN</a>
                 <?php if ($this->user && $this->user->user <> ""): ?>
-                    <span class="navbar-text">Bienvenido <?= $this->user->user ?> !</span>
+                    <span class="navbar-text ">Bienvenido <?= $this->user->user ?> !</span>
                 <?php endif; ?>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="collapse navbar-collapse " id="navbarNav">
                     <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="propiedades">Propiedades</a>
+                        <li class="nav-item border-start border-end border-secondary border-4">
+                            <a class="nav-link text-white" aria-current="page" href="propiedades">Todas las Propiedades</a>
+                        </li>
+                        <li class="nav-item border-end border-secondary border-4">
+                            <a class="nav-link text-white" aria-current="page" href="propietarios">Propietarios</a>
+                        </li>
+                        <li class="nav-item border-end border-secondary border-4">
+                            <a class="nav-link text-white" aria-current="page" href="categorias">Categorias</a>
                         </li>
                         <?php if (!empty($this->user && $this->user->user == "")): ?>
-                            <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="login">Login</a>
+                            <li class="nav-item border-end border-secondary border-4">
+                                <a class="nav-link text-white" aria-current="page" href="login">Loguearse</a>
                             </li>
                         <?php endif; ?>
 
                         <?php if ($this->user && $this->user->user <> ""): ?>
-                            <li class="nav-item">
+                            <li class="nav-item border-end border-secondary border-4">
                                 <a class="nav-link" href="logout">Salir</a>
                             </li>
                         <?php endif; ?>
@@ -47,4 +53,4 @@
         </nav>
     </header>
 
-    <main class="container mt-3">
+    <main class="bg-dark d-flex justify-content-center">

@@ -1,0 +1,17 @@
+<?php require 'templates/layout/header.phtml'; 
+$propietario = $owner; ?>
+
+<div class="container mt-4">
+    <h1 class="text-center">Detalles del propietario</h1>
+    <div class="card text-dark bg-light mb-3">
+        <div class="card-header">Información del propietario</div>
+        <div class="card-body">
+            <h5 class="card-title"><strong>Nombre:</strong> <?php echo htmlspecialchars($propietario->nombre); ?></h5>
+            <h5 class="card-text"><strong>Apellido:</strong> <?php echo htmlspecialchars($propietario->apellido); ?> </h5>
+            <p class="card-text"><strong>Categoria:</strong> <?php echo htmlspecialchars($propietario->categoria_id); ?></p>
+            <a href="propietarios" class="btn btn-success">Volver a la lista de propietarios</a>
+        </div>
+    </div>
+</div>
+
+<?php require 'templates/layout/footer.phtml'; ?>

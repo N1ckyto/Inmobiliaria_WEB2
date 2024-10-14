@@ -1,13 +1,21 @@
-<?php require 'templates/layout/header.phtml';
-$propiedad = $tasks ?>
+<?php require 'templates/layout/header.phtml'; 
+$propiedad = $property; ?>
 
-<h1>Detalles de la Propiedad</h1>
+<div class="container mt-4">
+    <h1 class="text-center">Detalles de la Propiedad</h1>
+    <div class="card text-dark bg-light mb-3">
+        <div class="card-header">Información de la Propiedad</div>
+        <div class="card-body">
+            <h5 class="card-title"><strong>Ubicación:</strong> <?php echo htmlspecialchars($propiedad->ubicacion); ?></h5>
+            <p class="card-text"><strong>Metros cuadrados:</strong> <?php echo htmlspecialchars($propiedad->m2); ?> m²</p>
+            <p class="card-text"><strong>Modalidad:</strong> <?php echo htmlspecialchars($propiedad->modalidad); ?></p>
+            <p class="card-text"><strong>Categoría:</strong> <?php echo htmlspecialchars($propiedad->categoria); ?></p>
+            <p class="card-text"><strong>Precio inicial:</strong> $<?php echo htmlspecialchars($propiedad->precio_inicial); ?></p>
+            <p class="card-text"><strong>Precio flexible:</strong> <?php echo $propiedad->precio_flex ? 'Sí' : 'No'; ?></p>
+            <p class="card-text"><strong>Propietario:</strong> <?php echo htmlspecialchars($propiedad->nombre . ' ' . $propiedad->apellido); ?></p>
+            <a href="propiedades" class="btn btn-success">Volver a la lista de propiedades</a>
+        </div>
+    </div>
+</div>
 
-<p><strong>Ubicación:</strong> <?php echo $propiedad->ubicacion; ?></p>
-<p><strong>Metros cuadrados:</strong> <?php echo $propiedad->m2; ?> m²</p>
-<p><strong>Modalidad:</strong> <?php echo $propiedad->modalidad; ?></p>
-<p><strong>Precio inicial:</strong> $<?php echo $propiedad->precio_inicial; ?></p>
-<p><strong>Precio flexible:</strong> <?php echo $propiedad->precio_flex ? 'Sí' : 'No'; ?></p>
-<p><strong>Propietario:</strong> <?php echo $propiedad->nombre . ' ' . $propiedad->apellido; ?></p>
-<a href="propiedades">Volver a la lista de propiedades</a>
-<?php require 'templates/layout/footer.phtml' ?>
+<?php require 'templates/layout/footer.phtml'; ?>
