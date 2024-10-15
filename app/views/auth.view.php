@@ -1,13 +1,17 @@
 <?php
 
-class AuthView {
+class AuthView
+{
     private $user = null;
 
-    public function showLogin($error = '') {
+    public function showLogin($error = '')
+    {
         require 'templates/form_login.phtml';
     }
 
-    public function showSignup($error = '') {
-        require 'templates/form_signup.phtml';
+    public function showError($error)
+    {
+        require 'templates/error.phtml';
+        require 'templates/form_login.phtml';
     }
 }

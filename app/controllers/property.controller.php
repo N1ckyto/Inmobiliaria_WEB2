@@ -27,6 +27,15 @@ class PropertyController
         return $this->view->showProperties($properties);
     }
 
+    public function addProperties()
+    {
+        // Obtiene las propiedades de la DB
+        $properties = $this->model->getProperties();
+
+        // Envía las propiedades a la vista
+        return $this->view->addProperties($properties);
+    }
+
     public function addProperty()
     {
         // Valida que los campos obligatorios estén presentes
@@ -58,19 +67,6 @@ class PropertyController
         header('Location: ' . BASE_URL);
     }
 
-    public function viewProperty($id)
-    {
-        // Obtiene la propiedad por id
-        $property = $this->model->getProperty($id);
-
-        if (!$property) {
-            return $this->view->showError("No existe la propiedad con el id=$id");
-        }
-
-        // Envía la propiedad a la vista
-        return $this->view->viewProperty($property);
-    }
-
     public function showDetails($id)
     {
         // Obtiene los detalles de la propiedad por id
@@ -90,7 +86,7 @@ class PropertyController
         }
 
         // Actualiza la propiedad (podrías ajustar los campos a actualizar según tus necesidades)
-        $this->model->updateProperty($id);
+        //$this->model->updateProperty($id);
 
         header('Location: ' . BASE_URL);
     }
@@ -101,7 +97,7 @@ class PropertyController
         $property = $this->model->getProperty($id);
 
         if (!$property) {
-            return $this->view->showError("No existe la propiedad con el id=$id");
+            return $this->view->showError("Propiedad eliminada exitosamente!");
         }
 
         // Elimina la propiedad de la base de datos

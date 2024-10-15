@@ -9,7 +9,7 @@ class CategoryController
 
     public function __construct($res)
     {
-        $this->model = new CategoryModel(); // Adaptado a CategoryModel
+        $this->model = new CategoryModel();
         $this->view = new CategoryView($res->user);
     }
 

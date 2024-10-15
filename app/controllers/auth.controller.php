@@ -33,7 +33,7 @@ class AuthController
         $password = $_POST['password'];
 
         // Verificar que el usuario está en la base de datos
-        $userFromDB = $this->model->getUserByEmail($user);
+        $userFromDB = $this->model->getUser($user);
 
         // password: admin
         // $userFromDB->password: $2y$10$c0vX38PKVKvh9O9nCeHQjO00.tZ4VJSiAYZ4R7CtEGO02GWrjl0dm
@@ -47,7 +47,7 @@ class AuthController
             // Redirijo a propiedades
             header('Location: ' . BASE_URL . 'propiedades');
         } else {
-            return $this->view->showLogin('Credenciales incorrectas');
+            return $this->view->showError('Credenciales incorrectas');
         }
     }
 

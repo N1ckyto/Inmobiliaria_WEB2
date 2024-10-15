@@ -1,0 +1,46 @@
+<!-- formulario de alta de tarea -->
+<div class="container mt-5 text-white" style="max-width: 500px;">
+    <form action="procesar_formulario.php" method="POST">
+        <div class="row mb-3">
+            <div class="col">
+                <label for="ubicacion" class="form-label">Ubicación</label>
+                <input type="text" class="form-control form-control-sm" id="ubicacion" name="ubicacion" required>
+            </div>
+            <div class="col">
+                <label for="precio_inicial" class="form-label">Precio Inicial</label>
+                <input type="text" class="form-control form-control-sm" id="precio_inicial" name="precio_inicial" required>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <label for="m2" class="form-label">Metros Cuadrados</label>
+                <input type="text" class="form-control form-control-sm" id="m2" name="m2" required>
+            </div>
+            <div class="col">
+                <label for="precio_flexible" class="form-label">Precio Flexible</label>
+                <input type="text" class="form-control form-control-sm" id="precio_flexible" name="precio_flexible">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <label for="modalidad" class="form-label">Modalidad</label>
+                <input type="text" class="form-control form-control-sm" id="modalidad" name="modalidad" required>
+            </div>
+            <div class="col">
+                <label for="propietario" class="form-label">Propietario</label>
+                <select required name="priority" class="form-control form-control-sm">
+                    <option value="">-</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </select>
+            </div>
+        </div>
+        <div class="d-grid">
+            <button type="submit" class="btn btn-primary btn-sm">Agregar</button>
+        </div>
+    </form>
+</div>

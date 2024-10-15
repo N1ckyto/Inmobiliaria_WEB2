@@ -9,8 +9,8 @@ function sessionAuthMiddleware($res)
         return;
     } else {
         $res->user = new stdClass();
-        $res->user->id = "";
-        $res->user->user = "";
+        $res->user->id = NULL;
+        $res->user->user = NULL;
         return;
     }
 }

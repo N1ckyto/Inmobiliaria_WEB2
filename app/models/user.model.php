@@ -9,7 +9,7 @@ class UserModel
         $this->db = new PDO('mysql:host=localhost;dbname=inmobiliaria_db;charset=utf8', 'root', '');
     }
 
-    public function getUserByEmail($user)
+    public function getUser($user)
     {
         $query = $this->db->prepare("SELECT * FROM usuarios WHERE usuario = ?");
         $query->execute([$user]);
