@@ -8,7 +8,8 @@ $propietario = $owner; ?>
         <div class="card-body">
             <h5 class="card-title"><strong>Nombre:</strong> <?php echo htmlspecialchars($propietario->nombre); ?></h5>
             <h5 class="card-text"><strong>Apellido:</strong> <?php echo htmlspecialchars($propietario->apellido); ?> </h5>
-            <p class="card-text"><strong>Categoria:</strong> <?php echo htmlspecialchars($propietario->categoria_id); ?></p>
+            <h5 class="card-title"><strong>Nº de propietario:</strong> <?php echo htmlspecialchars($propietario->id); ?></h5>
+            <h5 class="card-title"><strong>Cantidad de propiedades:.....</h5>
             <a href="propietarios" class="btn btn-success">Volver a la lista de propietarios</a>
         </div>
     </div>

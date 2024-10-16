@@ -11,21 +11,21 @@ class OwnerModel
 
     public function getOwners()
     {
-        $query = $this->db->prepare('SELECT id,nombre, apellido, categoria_id FROM propietarios'); // Solo seleccionando nombre, apellido y categoría
+        $query = $this->db->prepare('SELECT id,nombre,apellido FROM propietarios'); // Solo seleccionando nombre, apellido y id
         $query->execute();
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
     public function insertOwner($nombre, $apellido, $categoria_id)
     {
-        $query = $this->db->prepare('INSERT INTO propietarios (nombre, apellido, categoria_id) VALUES (?, ?, ?)');
+        $query = $this->db->prepare('INSERT INTO propietarios (nombre, apellido) VALUES (?, ?, ?)');
         $query->execute([$nombre, $apellido, $categoria_id]);
         return $this->db->lastInsertId(); // Devuelve el ID del nuevo propietario
     }
 
     public function getOwner($id)
     {
-        $query = $this->db->prepare('SELECT id,nombre, apellido, categoria_id FROM propietarios WHERE id = ?');
+        $query = $this->db->prepare('SELECT id,nombre, apellido FROM propietarios WHERE id = ?');
         $query->execute([$id]);
         return $query->fetch(PDO::FETCH_OBJ);
     }

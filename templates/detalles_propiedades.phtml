@@ -14,7 +14,7 @@ $propiedad = $property; ?>
             <p class="card-text"><strong>Propietario:</strong> <?php echo htmlspecialchars($propiedad->nombre . ' ' . $propiedad->apellido); ?></p>
             <a href="propiedades" class="btn btn-success">Volver a la lista de propiedades</a>
             <?php if ($this->user && $this->user->user <> NULL): ?>
-                <a href="agregarPropiedad" class="btn btn-danger">Seguir modificando propiedades</a>
+                <a href="agregar-modificarPropiedad" class="btn btn-danger">Seguir modificando propiedades</a>
             <?php endif; ?>
         </div>
     </div>

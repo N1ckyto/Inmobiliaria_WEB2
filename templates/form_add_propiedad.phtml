@@ -1,6 +1,6 @@
 <!-- formulario de alta de tarea -->
 <div class="container mt-5 text-white" style="max-width: 500px;">
-    <form action="procesar_formulario.php" method="POST">
+    <form action="agregarPropiedad" method="POST">
         <div class="row mb-3">
             <div class="col">
                 <label for="ubicacion" class="form-label">Ubicación</label>
@@ -18,24 +18,32 @@
             </div>
             <div class="col">
                 <label for="precio_flexible" class="form-label">Precio Flexible</label>
-                <input type="text" class="form-control form-control-sm" id="precio_flexible" name="precio_flexible">
+                <select required name="precio_flexible" class="form-control form-control-sm">
+                    <option value="">-</option>
+                    <option value="0">No</option>
+                    <option value="1">Si</option>
+                </select>
             </div>
         </div>
         <div class="row mb-3">
             <div class="col">
                 <label for="modalidad" class="form-label">Modalidad</label>
-                <input type="text" class="form-control form-control-sm" id="modalidad" name="modalidad" required>
+                <select required name="modalidad" class="form-control form-control-sm">
+                    <option value="">-</option>
+                    <option value="Venta">Venta</option>
+                    <option value="Alquiler">Alquiler</option>
+                </select>
             </div>
             <div class="col">
                 <label for="propietario" class="form-label">Propietario</label>
-                <select required name="priority" class="form-control form-control-sm">
+                <select required name="propietario" class="form-control form-control-sm">
                     <option value="">-</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
+                    <option value="1">Franco Espinoza</option>
+                    <option value="2">Lucas Losano</option>
+                    <option value="3">Soledad Moracho</option>
+                    <option value="4">Joaquin Sanchez</option>
+                    <option value="5">Santiago Gomez</option>
+                    <option value="6">Tomas Echeverria</option>
                 </select>
             </div>
         </div>

@@ -51,20 +51,27 @@ class PropertyController
         if (!isset($_POST['precio_inicial']) || empty($_POST['precio_inicial'])) {
             return $this->view->showError('Falta completar el precio inicial');
         }
+        if (!isset($_POST['precio_flexible'])) {
+            return $this->view->showError('Falta completar si el precio es flexible' . $_POST['precio_flexible']);
+        }
+        if (!isset($_POST['propietario']) || empty($_POST['propietario'])) {
+            return $this->view->showError('Falta completar quien es el propietario');
+        }
 
         // Obtiene los datos del formulario
         $ubicacion = $_POST['ubicacion'];
         $m2 = $_POST['m2'];
         $modalidad = $_POST['modalidad'];
-        $categoria = $_POST['categoria'];
-        $id_propietario = $_POST['id_propietario'];
         $precio_inicial = $_POST['precio_inicial'];
-        $precio_flex = isset($_POST['precio_flex']) ? $_POST['precio_flex'] : 0;
+        $precio_flex = isset($_POST['precio_flexible']) ? $_POST['precio_flexible'] : 0;
+        $id_propietario = $_POST['propietario'];
 
         // Inserta la nueva propiedad en la base de datos
-        $id = $this->model->insertProperty($ubicacion, $m2, $modalidad, $categoria, $id_propietario, $precio_inicial, $precio_flex);
+        $id = $this->model->insertProperty($ubicacion, $m2, $modalidad, $id_propietario, $precio_inicial, $precio_flex);
 
-        header('Location: ' . BASE_URL);
+        $properties = $this->model->getProperties();
+
+        return $this->view->addProperties($properties);
     }
 
     public function showDetails($id)

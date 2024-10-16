@@ -36,12 +36,17 @@ class PropertyModel
     }
 
     // Insertar una nueva propiedad en la base de datos
-    public function insertProperty($ubicacion, $m2, $modalidad, $categoria_id, $id_propietario, $precio_inicial, $precio_flex)
+    public function insertProperty($ubicacion, $m2, $modalidad, $id_propietario, $precio_inicial, $precio_flex)
     {
+        $stmt = $this->db->prepare("SELECT COUNT(*) FROM propietarios WHERE id = :id_propietario");
+        $stmt->execute(['id_propietario' => $id_propietario]);
+        if ($stmt->fetchColumn() == 0) {
+            die('Error: El propietario no existe');
+        }
         // Inserta una nueva propiedad con los campos necesarios
-        $query = $this->db->prepare('INSERT INTO propiedades (ubicacion, m2, modalidad, categoria_id, id_propietario, precio_inicial, precio_flex) 
-                                     VALUES (?, ?, ?, ?, ?, ?, ?)');
-        $query->execute([$ubicacion, $m2, $modalidad, $categoria_id, $id_propietario, $precio_inicial, $precio_flex]);
+        $query = $this->db->prepare('INSERT INTO propiedades (ubicacion, m2, modalidad, id_propietario, precio_inicial, precio_flex) 
+                                     VALUES (?, ?, ?, ?, ?, ?)');
+        $query->execute([$ubicacion, $m2, $modalidad, $id_propietario, $precio_inicial, $precio_flex]);
 
         // Obtiene el último ID insertado
         $id = $this->db->lastInsertId();
@@ -53,7 +58,7 @@ class PropertyModel
     public function getDetails($id)
     {
         // Consulta para obtener los detalles de la propiedad y su propietario
-        $stmt = $this->db->prepare('SELECT p.ubicacion, p.m2, p.modalidad, p.categoria_id, p.precio_inicial, p.precio_flex, 
+        $stmt = $this->db->prepare('SELECT p.ubicacion, p.m2, p.modalidad, p.precio_inicial, p.precio_flex, 
             pr.nombre, pr.apellido 
             FROM propiedades p 
             JOIN propietarios pr ON p.id_propietario = pr.id

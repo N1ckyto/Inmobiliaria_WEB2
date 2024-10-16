@@ -48,10 +48,15 @@ switch ($params[0]) {
         $controller = new OwnerController($res);
         $controller->viewOwner($params[1]);
         break;
-    case 'agregarPropiedad':
+    case 'agregar-modificarPropiedad':
         sessionAuthMiddleware($res);
         $controller = new PropertyController($res);
         $controller->addProperties();
+        break;
+    case 'agregarPropiedad':
+        sessionAuthMiddleware($res);
+        $controller = new PropertyController($res);
+        $controller->addProperty();
         break;
     case 'borrarPropiedad':
         sessionAuthMiddleware($res);
