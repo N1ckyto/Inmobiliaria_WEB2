@@ -23,7 +23,7 @@ Escudero Nicolas - Barberia Facundo
 ## Instalación y Configuración
 
 1. **Importar la base de datos**:
-   Importar el archivo `inmobiliaria.sql` en PHPMyAdmin para cargar la estructura y datos iniciales.
+   Importar el archivo `inmobiliaria_db.sql` en PHPMyAdmin para cargar la estructura y datos iniciales.
 
 # Usuario admin
 username: `webadmin`
