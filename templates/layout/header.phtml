@@ -18,34 +18,36 @@
     <header>
         <nav class="navbar navbar-expand-lg bg-dark">
             <div class="container-fluid ">
-                <a class="navbar-brand text-light" href="home">INMOBILIARIA - FN</a>
+                <div class="<?php echo ($this->user && $this->user->user != NULL) ? 'border-secondary border-3 border-top pb-2 pt-1 px-3' : 'border-secondary border-3 border-bottom pb-2 mt-1 px-3'; ?>">
+                    <a class="h4 text-decoration-none text-light" href="home">INMOBILIARIA - FN</a>
+                </div>
                 <div class="collapse navbar-collapse " id="navbarNav">
                     <ul class="navbar-nav">
                         <?php if ($this->user && $this->user->user <> NULL): ?>
-                            <span class="nav-link border-start text-primary border-secondary border-4">Bienvenido <?= $this->user->user ?> !</span>
+                            <span class="nav-link border-start text-success border-secondary border-4 border-bottom">Bienvenido <?= $this->user->user ?> !</span>
                         <?php endif; ?>
-                        <li class="nav-item border-start border-end border-secondary border-4">
+                        <li class="nav-item border-start border-end border-secondary border-4 border-top">
                             <a class="nav-link text-white" aria-current="page" href="propiedades">Todas las Propiedades</a>
                         </li>
-                        <li class="nav-item border-end border-secondary border-4">
+                        <li class="nav-item border-end border-secondary border-4 border-bottom">
                             <a class="nav-link text-white" aria-current="page" href="propietarios">Propietarios</a>
                         </li>
                         <?php if ($this->user && $this->user->user <> NULL): ?>
-                            <li class="nav-item border-end border-secondary border-4">
-                                <a class="nav-link text-white" aria-current="page" href="categorias">Categorias</a>
+                            <li class="nav-item border-end border-secondary border-4 border-top">
+                                <a class="nav-link text-white" aria-current="page" href="agregar-modificarPropiedad">Administrar propiedades</a>
                             </li>
-                            <li class="nav-item border-end border-secondary border-4">
-                                <a class="nav-link text-white" aria-current="page" href="agregar-modificarPropiedad">Agregar propiedad</a>
+                            <li class="nav-item border-end border-secondary border-4 border-bottom">
+                                <a class="nav-link text-white" aria-current="page" href="agregar-modificarPropietario">Administrar propietarios</a>
                             </li>
                         <?php endif; ?>
                         <?php if (!empty($this->user && $this->user->user == NULL)): ?>
-                            <li class="nav-item border-end border-secondary border-4">
+                            <li class="nav-item border-end border-secondary border-4 border-top">
                                 <a class="nav-link text-white" aria-current="page" href="login">Loguearse</a>
                             </li>
                         <?php endif; ?>
 
                         <?php if ($this->user && $this->user->user <> NULL): ?>
-                            <li class="nav-item border-end border-secondary border-4">
+                            <li class="nav-item border-end border-secondary border-4 border-top">
                                 <a class="nav-link text-danger" href="logout">Salir</a>
                             </li>
                         <?php endif; ?>

@@ -4,7 +4,6 @@ require_once 'app/middlewares/session.auth.middleware.php';
 require_once 'app/controllers/property.controller.php';
 require_once 'app/controllers/auth.controller.php';
 require_once 'app/controllers/owner.controller.php';
-require_once 'app/controllers/category.controller.php';
 
 define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
 
@@ -33,11 +32,6 @@ switch ($params[0]) {
         $controller = new OwnerController($res);
         $controller->showOwners();
         break;
-    case 'categorias':
-        sessionAuthMiddleware($res);
-        $controller = new CategoryController($res);
-        $controller->showCategories();
-        break;
     case 'detallePropiedad':
         sessionAuthMiddleware($res);
         $controller = new PropertyController($res);
@@ -53,15 +47,30 @@ switch ($params[0]) {
         $controller = new PropertyController($res);
         $controller->addProperties();
         break;
+    case 'agregar-modificarPropietario':
+        sessionAuthMiddleware($res);
+        $controller = new OwnerController($res);
+        $controller->addOwners();
+        break;
     case 'agregarPropiedad':
         sessionAuthMiddleware($res);
         $controller = new PropertyController($res);
         $controller->addProperty();
         break;
+    case 'agregarPropietario':
+        sessionAuthMiddleware($res);
+        $controller = new OwnerController($res);
+        $controller->addOwner();
+        break;
     case 'borrarPropiedad':
         sessionAuthMiddleware($res);
         $controller = new PropertyController($res);
         $controller->deleteProperty($params[1]);
+        break;
+    case 'borrarPropietario':
+        sessionAuthMiddleware($res);
+        $controller = new OwnerController($res);
+        $controller->deleteOwner($params[1]);
         break;
     case 'showEdit':
         sessionAuthMiddleware($res);
@@ -72,6 +81,16 @@ switch ($params[0]) {
         sessionAuthMiddleware($res);
         $controller = new PropertyController($res);
         $controller->updateProperty();
+        break;
+    case 'showEditOwner':
+        sessionAuthMiddleware($res);
+        $controller = new OwnerController($res);
+        $controller->showEdit($params[1]);
+        break;
+    case 'editarPropietario':
+        sessionAuthMiddleware($res);
+        $controller = new OwnerController($res);
+        $controller->updateOwner();
         break;
     case 'showLogin':
         $controller = new AuthController();

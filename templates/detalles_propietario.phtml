@@ -1,5 +1,6 @@
 <?php require 'templates/layout/header.phtml';
-$propietario = $owner; ?>
+$propietario = $owner; 
+$cantPropiedades = $properties; ?>
 
 <div class="container mt-4">
     <h1 class="text-center">Detalles del propietario</h1>
@@ -9,8 +10,11 @@ $propietario = $owner; ?>
             <h5 class="card-title"><strong>Nombre:</strong> <?php echo htmlspecialchars($propietario->nombre); ?></h5>
             <h5 class="card-text"><strong>Apellido:</strong> <?php echo htmlspecialchars($propietario->apellido); ?> </h5>
             <h5 class="card-title"><strong>Nº de propietario:</strong> <?php echo htmlspecialchars($propietario->id); ?></h5>
-            <h5 class="card-title"><strong>Cantidad de propiedades:.....</h5>
+            <h5 class="card-title"><strong>Cantidad de propiedades: <?php echo htmlspecialchars($cantPropiedades) ?> </h5>
             <a href="propietarios" class="btn btn-success">Volver a la lista de propietarios</a>
+            <?php if ($this->user && $this->user->user <> NULL): ?>
+                <a href="agregar-modificarPropietario" class="btn btn-danger">Seguir modificando propietarios</a>
+            <?php endif; ?>
         </div>
     </div>
 </div>

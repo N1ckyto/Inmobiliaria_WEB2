@@ -11,16 +11,23 @@ class OwnerModel
 
     public function getOwners()
     {
-        $query = $this->db->prepare('SELECT id,nombre,apellido FROM propietarios'); // Solo seleccionando nombre, apellido y id
+        $query = $this->db->prepare('SELECT id,nombre,apellido FROM propietarios'); 
         $query->execute();
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public function insertOwner($nombre, $apellido, $categoria_id)
+    public function countPropertiesByOwner($id)
     {
-        $query = $this->db->prepare('INSERT INTO propietarios (nombre, apellido) VALUES (?, ?, ?)');
-        $query->execute([$nombre, $apellido, $categoria_id]);
-        return $this->db->lastInsertId(); // Devuelve el ID del nuevo propietario
+        $query = $this->db->prepare('SELECT COUNT(*) AS total FROM propiedades WHERE id_propietario = ?');
+        $query->execute([$id]);
+        return $query->fetch(PDO::FETCH_OBJ)->total;
+    }
+
+    public function insertOwner($nombre, $apellido,)
+    {
+        $query = $this->db->prepare('INSERT INTO propietarios (nombre, apellido) VALUES (?, ?)');
+        $query->execute([$nombre, $apellido]);
+        return $this->db->lastInsertId(); 
     }
 
     public function getOwner($id)
@@ -30,10 +37,10 @@ class OwnerModel
         return $query->fetch(PDO::FETCH_OBJ);
     }
 
-    public function updateOwner($id, $nombre, $apellido, $categoria_id)
+    public function updateOwner($id, $nombre, $apellido)
     {
-        $query = $this->db->prepare('UPDATE propietarios SET nombre = ?, apellido = ?, categoria_id = ? WHERE id = ?');
-        $query->execute([$nombre, $apellido, $categoria_id, $id]);
+        $query = $this->db->prepare('UPDATE propietarios SET nombre = ?, apellido = ? WHERE id = ?');
+        $query->execute([$nombre, $apellido, $id]);
     }
 
     public function deleteOwner($id)

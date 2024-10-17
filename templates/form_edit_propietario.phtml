@@ -1,0 +1,25 @@
+<?php require 'templates/layout/header.phtml';
+$id = $id;
+$nombre = $owner->nombre;
+$apellido = $owner->apellido;
+?>
+<div class="container mt-5 text-white" style="max-width: 500px;">
+    <form action="editarPropietario" method="POST">
+        <div class="row mb-3">
+            <div class="col">
+                <input type="hidden" value="<?php echo htmlspecialchars($id) ?>" id="id" name="id">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control form-control-sm" id="nombre" name="nombre" value="<?php echo htmlspecialchars($nombre) ?>" required>
+            </div>
+            <div class="col">
+                <label for="apellido" class="form-label">Apellido</label>
+                <input type="text" class="form-control form-control-sm" id="apellido" name="apellido" value="<?php echo htmlspecialchars($apellido) ?>" required>
+            </div>
+        </div>
+        <div class="d-grid">
+            <button type="submit" class="btn btn-primary btn-sm mb-2">Editar</button>
+            <a href="agregar-modificarPropietario" class="btn btn-danger btn-sm">Modificar otro propietario</a>
+        </div>
+    </form>
+</div>
+<?php require 'templates/layout/footer.phtml'; ?>

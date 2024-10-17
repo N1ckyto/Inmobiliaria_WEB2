@@ -26,49 +26,63 @@ class OwnerController
         // Envía los propietarios a la vista
         return $this->view->showOwners($owners);
     }
+    public function showEdit($id)
+    {
+        $owner = $this->model->getOwner($id);
+        if (!$owner) {
+            return $this->view->showError("No existe el propietario con el id=$id");
+        }
+        return $this->view->showEdit($id,$owner);
+    }
 
+    public function addOwners()
+    {
+        // Obtiene las propiedades de la DB
+        $owners = $this->model->getOwners();
+
+        // Envía las propiedades a la vista
+        return $this->view->addOwners($owners);
+    }
     public function addOwner()
     {
-        // Valida que los campos obligatorios estén presentes
         if (!isset($_POST['nombre']) || empty($_POST['nombre'])) {
             return $this->view->showError('Falta completar el nombre');
         }
         if (!isset($_POST['apellido']) || empty($_POST['apellido'])) {
             return $this->view->showError('Falta completar el apellido');
         }
-        if (!isset($_POST['categoria']) || empty($_POST['categoria'])) {
-            return $this->view->showError('Falta completar la categoría');
-        }
 
-        // Obtiene los datos del formulario
+       
         $nombre = $_POST['nombre'];
         $apellido = $_POST['apellido'];
-        $categoria = $_POST['categoria'];
 
-        // Inserta el nuevo propietario en la base de datos
-        $id = $this->model->insertOwner($nombre, $apellido, $categoria);
+        
+        $id = $this->model->insertOwner($nombre, $apellido);
 
-        header('Location: ' . BASE_URL . 'propietarios'); // Redirige a la lista de propietarios
+        
+        $owners = $this->model->getOwners();
+
+        return $this->view->showOwners($owners);
     }
 
     public function viewOwner($id)
     {
-        // Obtiene el propietario por id
         $owner = $this->model->getOwner($id);
-
+        $properties = $this->model->countPropertiesByOwner($id);
         if (!$owner) {
             return $this->view->showError("No existe el propietario con el id=$id");
         }
 
         // Envía el propietario a la vista
-        return $this->view->viewOwner($owner);
+        return $this->view->viewOwner($owner, $properties);
     }
 
-    public function updateOwner($id)
+    public function updateOwner()
     {
+        $id = $_POST['id'];
         // Valida si el propietario existe
         $owner = $this->model->getOwner($id);
-
+        
         if (!$owner) {
             return $this->view->showError("No existe el propietario con el id=$id");
         }
@@ -76,25 +90,27 @@ class OwnerController
         // Actualiza el propietario (puedes ajustar los campos a actualizar según tus necesidades)
         $nombre = $_POST['nombre'];
         $apellido = $_POST['apellido'];
-        $categoria = $_POST['categoria'];
         
-        $this->model->updateOwner($id, $nombre, $apellido, $categoria);
+        $this->model->updateOwner($id, $nombre, $apellido);
+        return $this->view->showAlert("Propietario editado!");
 
-        header('Location: ' . BASE_URL . 'propietarios');
     }
 
     public function deleteOwner($id)
     {
         // Valida si el propietario existe
         $owner = $this->model->getOwner($id);
-
+        $properties = $this->model->countPropertiesByOwner($id);
         if (!$owner) {
             return $this->view->showError("No existe el propietario con el id=$id");
+        }
+        if ($properties > 0) {
+            return $this->view->showError("No se puede borrar un propietario con $properties propiedades a su nombre, borralas primero");
         }
 
         // Elimina el propietario de la base de datos
         $this->model->deleteOwner($id);
 
-        header('Location: ' . BASE_URL . 'propietarios');
+        return $this->view->showAlert("Propietario eliminado!");
     }
 }
