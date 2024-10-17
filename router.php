@@ -63,7 +63,7 @@ switch ($params[0]) {
         $controller = new PropertyController($res);
         $controller->deleteProperty($params[1]);
         break;
-    case 'showEdit';
+    case 'showEdit':
         sessionAuthMiddleware($res);
         $controller = new PropertyController($res);
         $controller->showEdit($params[1]);

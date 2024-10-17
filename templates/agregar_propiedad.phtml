@@ -1,12 +1,12 @@
 <?php require 'templates/layout/header.phtml' ?>
 
-<?php require 'templates/form_add_propiedad.phtml' ?>
+<?php require 'templates/form_add_propiedad.phtml'; ?>
 
 <div class="container mt-5" style="max-width: 600px;">
     <h3 class="text-white my-2">Propiedades</h3>
     <ul class="list-group">
         <?php foreach ($properties as $property): ?>
-            <li class="list-group-item item-task d-flex justify-content-between align-items-center <?php if ($property->finalizada): ?> finished <?php endif ?>">
+            <li class="list-group-item item-task d-flex justify-content-between align-items-center">
                 <b><?= htmlspecialchars($property->ubicacion) ?></b>
                 <div class="d-flex justify-content-end">
                     <a href="detallePropiedad/<?= $property->id ?>" class="btn btn-success btn-sm mx-1"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">

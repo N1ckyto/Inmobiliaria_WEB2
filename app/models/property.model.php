@@ -36,6 +36,13 @@ class PropertyModel
         return $property;
     }
 
+    public function getOwner($id)
+    {
+        $query = $this->db->prepare('SELECT id,nombre, apellido FROM propietarios WHERE id = ?');
+        $query->execute([$id]);
+        return $query->fetch(PDO::FETCH_OBJ);
+    }
+
     // Insertar una nueva propiedad en la base de datos
     public function insertProperty($ubicacion, $m2, $modalidad, $id_propietario, $precio_inicial, $precio_flex)
     {
@@ -78,11 +85,11 @@ class PropertyModel
     }
 
     // Actualizar una propiedad (aquí puedes ajustar los campos que desees actualizar)
-    public function updateProperty($ubicacion, $m2, $modalidad, $id_propietario, $precio_inicial, $precio_flex)
+    public function updateProperty($ubicacion, $m2, $modalidad, $id_propietario, $precio_inicial, $precio_flex, $id)
     {
         // Actualiza una propiedad con los datos proporcionados
 
-        $query = $this->db->prepare("UPDATE propiedades SET ubicacion = ?, m2 = ?, modalidad = ?, id_propietario = ?, precio_inicial = ?, precio_flex = ?");
-        $query->execute([$ubicacion, $m2, $modalidad, $id_propietario, $precio_inicial, $precio_flex]);
+        $query = $this->db->prepare("UPDATE propiedades SET ubicacion = ?, m2 = ?, modalidad = ?, id_propietario = ?, precio_inicial = ?, precio_flex = ? WHERE id = ?");
+        $query->execute([$ubicacion, $m2, $modalidad, $id_propietario, $precio_inicial, $precio_flex, $id]);
     }
 }

@@ -1,24 +1,36 @@
-<!-- formulario de alta de tarea -->
+<?php require 'templates/layout/header.phtml';
+$id_propiedad = $id;
+$ubicacion = $property->ubicacion;
+$precio_inicial = $property->precio_inicial;
+$m2 = $property->m2;
+$precio_flexible = $property->precio_flex;
+$modalidad = $property->modalidad;
+$id_propietario = $property->id_propietario;
+$nombre = $propertyDetails->nombre;
+$apellido = $propertyDetails->apellido;
+?>
 <div class="container mt-5 text-white" style="max-width: 500px;">
-    <form action="agregarPropiedad" method="POST">
+    <form action="editarPropiedad" method="POST">
         <div class="row mb-3">
             <div class="col">
+                <input type="hidden" value="<?php echo htmlspecialchars($id_propiedad) ?>" id="id" name="id">
                 <label for="ubicacion" class="form-label">Ubicación</label>
-                <input type="text" class="form-control form-control-sm" id="ubicacion" name="ubicacion" required>
+                <input type="text" class="form-control form-control-sm" id="ubicacion" name="ubicacion" value="<?php echo htmlspecialchars($ubicacion) ?>" required>
             </div>
             <div class="col">
                 <label for="precio_inicial" class="form-label">Precio Inicial</label>
-                <input type="text" class="form-control form-control-sm" id="precio_inicial" name="precio_inicial" required>
+                <input type="text" class="form-control form-control-sm" id="precio_inicial" name="precio_inicial" value="<?php echo htmlspecialchars($precio_inicial) ?>" required>
             </div>
         </div>
         <div class="row mb-3">
             <div class="col">
                 <label for="m2" class="form-label">Metros Cuadrados</label>
-                <input type="text" class="form-control form-control-sm" id="m2" name="m2" required>
+                <input type="text" class="form-control form-control-sm" id="m2" name="m2" value="<?php echo htmlspecialchars($m2) ?>" required>
             </div>
             <div class="col">
                 <label for="precio_flexible" class="form-label">Precio Flexible</label>
                 <select required name="precio_flexible" class="form-control form-control-sm">
+                    <option hidden selected value="<?php echo htmlspecialchars($precio_flexible)  ?>"><?php echo htmlspecialchars($precio_flexible) ? 'Sí' : 'No'; ?></option>
                     <option value="">-</option>
                     <option value="0">No</option>
                     <option value="1">Si</option>
@@ -29,6 +41,7 @@
             <div class="col">
                 <label for="modalidad" class="form-label">Modalidad</label>
                 <select required name="modalidad" class="form-control form-control-sm">
+                    <option hidden selected value="<?php echo htmlspecialchars($modalidad) ?>"><?php echo htmlspecialchars($modalidad) ?></option>
                     <option value="">-</option>
                     <option value="Venta">Venta</option>
                     <option value="Alquiler">Alquiler</option>
@@ -37,6 +50,7 @@
             <div class="col">
                 <label for="propietario" class="form-label">Propietario</label>
                 <select required name="propietario" class="form-control form-control-sm">
+                    <option hidden selected value="<?php echo htmlspecialchars($id_propietario) ?>"><?php echo htmlspecialchars($nombre . ' ' . $apellido) ?></option>
                     <option value="">-</option>
                     <option value="1">Franco Espinoza</option>
                     <option value="2">Lucas Losano</option>
@@ -48,7 +62,9 @@
             </div>
         </div>
         <div class="d-grid">
-            <button type="submit" class="btn btn-primary btn-sm">Agregar</button>
+            <button type="submit" class="btn btn-primary btn-sm mb-2">Editar</button>
+            <a href="agregar-modificarPropiedad" class="btn btn-danger btn-sm">Modificar otra propiedad</a>
         </div>
     </form>
 </div>
+<?php require 'templates/layout/footer.phtml'; ?>

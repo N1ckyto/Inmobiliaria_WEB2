@@ -36,19 +36,22 @@ class PropertyView
         require_once 'templates/detalles_propiedades.phtml'; // Cambiado el nombre a detalles_propiedades.phtml
     }
 
-    public function showEdit($id_propierty)
+    public function showEdit($id, $propertyDetails, $property)
     {
-        $id = $id_propierty;
-        echo ($id);
-        require 'templates/layout/header.phtml';
-        require 'templates/form_add_propiedad.phtml';
-        require 'templates/layout/footer.phtml';
+        require 'templates/form_edit_propierty.phtml';
     }
 
     public function showError($error)
     {
         require 'templates/layout/header.phtml';
         require 'templates/error.phtml';
+        require 'templates/layout/footer.phtml';
+    }
+
+    public function showAlert($alert)
+    {
+        require 'templates/layout/header.phtml';
+        require 'templates/alert.phtml';
         require 'templates/layout/footer.phtml';
     }
 }

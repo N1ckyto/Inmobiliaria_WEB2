@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-10-2024 a las 16:04:34
+-- Tiempo de generación: 17-10-2024 a las 19:52:04
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -47,6 +47,12 @@ INSERT INTO `propiedades` (`id`, `ubicacion`, `m2`, `modalidad`, `id_propietario
 (6, 'Calle Jardines 33', 65, 'alquiler', 6, 120000, 1),
 (7, 'Calle Pinos 12', 105, 'venta', 1, 170000, 1),
 (8, 'Avenida Mar 99', 120, 'alquiler', 2, 140000, 0),
+(9, 'Calle Luna 21', 80, 'venta', 3, 180000, 1),
+(10, 'Avenida Montaña 10', 90, 'alquiler', 4, 135000, 0),
+(11, 'Calle Nubes 8', 70, 'alquiler', 5, 125000, 0),
+(12, 'Calle Ríos 14', 110, 'venta', 6, 190000, 1),
+(13, 'Avenida Tierra 22', 85, 'venta', 3, 175000, 1),
+(14, 'Calle Bosques 50', 95, 'alquiler', 1, 145000, 0),
 (49, 'Avenida Sol 45', 95, 'Alquiler', 2, 300000, 0);
 
 -- --------------------------------------------------------

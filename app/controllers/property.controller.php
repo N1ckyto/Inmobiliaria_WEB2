@@ -90,10 +90,8 @@ class PropertyController
         if (!$property) {
             return $this->view->showError("No existe la propiedad con el id=$id");
         }
-        $url = $_SERVER['REQUEST_URI'];
-        $id_propierty = basename($url);
-        //return $this->view->showError($id_propierty); me da el id de la propiedad que quiero modificar
-        return $this->view->showEdit($id_propierty);
+        $propertyDetails = $this->model->getDetails($id);
+        return $this->view->showEdit($id, $propertyDetails,$property);
     }
 
 
@@ -127,10 +125,11 @@ class PropertyController
         $precio_inicial = $_POST['precio_inicial'];
         $precio_flex = isset($_POST['precio_flexible']) ? $_POST['precio_flexible'] : 0;
         $id_propietario = $_POST['propietario'];
-        $id = $id;
+        $id = $_POST['id'];
+
         //Actualiza la propiedad (podrías ajustar los campos a actualizar según tus necesidades)
-        $this->model->updateProperty($ubicacion, $m2, $modalidad, $id_propietario, $precio_inicial, $precio_flex);
-        return $this->view->showEdit();
+        $property = $this->model->updateProperty($ubicacion, $m2, $modalidad, $id_propietario, $precio_inicial, $precio_flex, $id);
+        return $this->view->showAlert("Propiedad editada!");
     }
 
     public function deleteProperty($id)
@@ -139,7 +138,7 @@ class PropertyController
         $property = $this->model->getProperty($id);
 
         if (!$property) {
-            return $this->view->showError("Propiedad eliminada exitosamente!");
+            return $this->view->showAlert("Propiedad eliminada exitosamente!");
         }
 
         // Elimina la propiedad de la base de datos

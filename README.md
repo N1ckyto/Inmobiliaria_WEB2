@@ -20,3 +20,12 @@ detalles. Esta base de datos será luego expuesta y administrada vía web.
 # Estudiantes
 Escudero Nicolas - Barberia Facundo
 
+## Instalación y Configuración
+
+1. **Importar la base de datos**:
+   Importar el archivo `inmobiliaria.sql` en PHPMyAdmin para cargar la estructura y datos iniciales.
+
+# Usuario admin
+username: `webadmin`
+password: `admin`
+
