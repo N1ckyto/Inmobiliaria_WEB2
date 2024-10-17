@@ -27,9 +27,10 @@ class PropertyModel
     public function getProperty($id)
     {
         $query = $this->db->prepare('SELECT * FROM propiedades WHERE id = ?');
-        $query->execute([$id]);
 
         // Obtiene la propiedad
+        $query->bindValue(':id', $id, PDO::PARAM_INT);
+        $query->execute([$id]);
         $property = $query->fetch(PDO::FETCH_OBJ);
 
         return $property;
@@ -77,11 +78,11 @@ class PropertyModel
     }
 
     // Actualizar una propiedad (aquí puedes ajustar los campos que desees actualizar)
-    public function updateProperty($id, $ubicacion, $m2, $modalidad, $categoria_id, $precio_inicial, $precio_flex)
+    public function updateProperty($ubicacion, $m2, $modalidad, $id_propietario, $precio_inicial, $precio_flex)
     {
         // Actualiza una propiedad con los datos proporcionados
-        $query = $this->db->prepare('UPDATE propiedades SET ubicacion = ?, m2 = ?, modalidad = ?, categoria_id = ?, precio_inicial = ?, precio_flex = ? 
-                                     WHERE id = ?');
-        $query->execute([$ubicacion, $m2, $modalidad, $categoria_id, $precio_inicial, $precio_flex, $id]);
+
+        $query = $this->db->prepare("UPDATE propiedades SET ubicacion = ?, m2 = ?, modalidad = ?, id_propietario = ?, precio_inicial = ?, precio_flex = ?");
+        $query->execute([$ubicacion, $m2, $modalidad, $id_propietario, $precio_inicial, $precio_flex]);
     }
 }

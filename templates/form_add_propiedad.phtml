@@ -1,6 +1,20 @@
 <!-- formulario de alta de tarea -->
+<?php
+$script = $_SERVER['REQUEST_URI'];
+$accion = basename($script);
+?>
 <div class="container mt-5 text-white" style="max-width: 500px;">
-    <form action="agregarPropiedad" method="POST">
+    <form <?php
+            if ($accion == 'agregar-modificarPropiedad' || $accion == 'agregarPropiedad') { ?>
+        action="agregarPropiedad"
+        <?php
+            } else {
+        ?>
+        action="editarPropiedad"
+        <?php
+            }
+        ?>
+        method="POST">
         <div class="row mb-3">
             <div class="col">
                 <label for="ubicacion" class="form-label">Ubicación</label>
@@ -48,7 +62,16 @@
             </div>
         </div>
         <div class="d-grid">
-            <button type="submit" class="btn btn-primary btn-sm">Agregar</button>
+            <?php
+            if ($accion == 'agregar-modificarPropiedad' || $accion == 'agregarPropiedad') { ?>
+                <button type="submit" class="btn btn-primary btn-sm">Agregar</button>
+            <?php
+            } else {
+            ?>
+                <button type="submit" class="btn btn-primary btn-sm">Editar</button>
+            <?php
+            }
+            ?>
         </div>
     </form>
 </div>

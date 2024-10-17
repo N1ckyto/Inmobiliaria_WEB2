@@ -27,15 +27,22 @@ class PropertyView
     {
         // La vista define una nueva variable con la cantidad de propiedades
         $count = count($properties); // Cambiado de $tasks a $properties
-
         // NOTA: el template va a poder acceder a todas las variables y constantes que tienen alcance en esta función
         require 'templates/agregar_propiedad.phtml'; // Cambiado el nombre a lista_propiedades.phtml
     }
 
-
     public function viewDetails($property) // Cambiado de $tasks a $property
     {
         require_once 'templates/detalles_propiedades.phtml'; // Cambiado el nombre a detalles_propiedades.phtml
+    }
+
+    public function showEdit($id_propierty)
+    {
+        $id = $id_propierty;
+        echo ($id);
+        require 'templates/layout/header.phtml';
+        require 'templates/form_add_propiedad.phtml';
+        require 'templates/layout/footer.phtml';
     }
 
     public function showError($error)
