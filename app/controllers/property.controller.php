@@ -31,9 +31,10 @@ class PropertyController
     {
         // Obtiene las propiedades de la DB
         $properties = $this->model->getProperties();
+        $owners = $this->model->getOwners();
 
         // Envía las propiedades a la vista
-        return $this->view->addProperties($properties);
+        return $this->view->addProperties($properties, $owners);
     }
 
     public function addProperty()
@@ -70,8 +71,8 @@ class PropertyController
         $id = $this->model->insertProperty($ubicacion, $m2, $modalidad, $id_propietario, $precio_inicial, $precio_flex);
 
         $properties = $this->model->getProperties();
-
-        return $this->view->addProperties($properties);
+        $owners = $this->model->getOwners();
+        return $this->view->addProperties($properties, $owners);
     }
 
     public function showDetails($id)
@@ -91,7 +92,8 @@ class PropertyController
             return $this->view->showError("No existe la propiedad con el id=$id");
         }
         $propertyDetails = $this->model->getDetails($id);
-        return $this->view->showEdit($id, $propertyDetails,$property);
+        $owners = $this->model->getOwners();
+        return $this->view->showEdit($id, $propertyDetails, $property, $owners);
     }
 
 

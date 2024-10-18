@@ -32,7 +32,7 @@ class OwnerController
         if (!$owner) {
             return $this->view->showError("No existe el propietario con el id=$id");
         }
-        return $this->view->showEdit($id,$owner);
+        return $this->view->showEdit($id, $owner);
     }
 
     public function addOwners()
@@ -52,14 +52,14 @@ class OwnerController
             return $this->view->showError('Falta completar el apellido');
         }
 
-       
+
         $nombre = $_POST['nombre'];
         $apellido = $_POST['apellido'];
 
-        
+
         $id = $this->model->insertOwner($nombre, $apellido);
 
-        
+
         $owners = $this->model->getOwners();
 
         return $this->view->showOwners($owners);
@@ -82,7 +82,7 @@ class OwnerController
         $id = $_POST['id'];
         // Valida si el propietario existe
         $owner = $this->model->getOwner($id);
-        
+
         if (!$owner) {
             return $this->view->showError("No existe el propietario con el id=$id");
         }
@@ -90,10 +90,9 @@ class OwnerController
         // Actualiza el propietario (puedes ajustar los campos a actualizar según tus necesidades)
         $nombre = $_POST['nombre'];
         $apellido = $_POST['apellido'];
-        
+
         $this->model->updateOwner($id, $nombre, $apellido);
         return $this->view->showAlert("Propietario editado!");
-
     }
 
     public function deleteOwner($id)
@@ -101,13 +100,9 @@ class OwnerController
         // Valida si el propietario existe
         $owner = $this->model->getOwner($id);
         $properties = $this->model->countPropertiesByOwner($id);
-        if (!$owner) {
-            return $this->view->showError("No existe el propietario con el id=$id");
-        }
         if ($properties > 0) {
             return $this->view->showError("No se puede borrar un propietario con $properties propiedades a su nombre, borralas primero");
         }
-
         // Elimina el propietario de la base de datos
         $this->model->deleteOwner($id);
 

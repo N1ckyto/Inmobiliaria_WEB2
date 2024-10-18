@@ -36,6 +36,13 @@ class PropertyModel
         return $property;
     }
 
+    public function getOwners()
+    {
+        $query = $this->db->prepare('SELECT id,nombre,apellido FROM propietarios');
+        $query->execute();
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
     public function getOwner($id)
     {
         $query = $this->db->prepare('SELECT id,nombre, apellido FROM propietarios WHERE id = ?');

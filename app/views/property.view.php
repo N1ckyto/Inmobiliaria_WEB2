@@ -11,47 +11,38 @@ class PropertyView
 
     public function showHome()
     {
-        require_once 'templates/home.phtml'; // Vista de inicio
+        require_once 'templates/home.phtml';
     }
 
-    public function showProperties($properties) // Cambiado de $tasks a $properties
+    public function showProperties($properties)
     {
-        // La vista define una nueva variable con la cantidad de propiedades
-        $count = count($properties); // Cambiado de $tasks a $properties
-
-        // NOTA: el template va a poder acceder a todas las variables y constantes que tienen alcance en esta función
-        require 'templates/lista_propiedades.phtml'; // Cambiado el nombre a lista_propiedades.phtml
+        $count = count($properties);
+        require 'templates/lista_propiedades.phtml';
     }
 
-    public function addProperties($properties) // Cambiado de $tasks a $properties
+    public function addProperties($properties, $owners)
     {
-        // La vista define una nueva variable con la cantidad de propiedades
-        $count = count($properties); // Cambiado de $tasks a $properties
-        // NOTA: el template va a poder acceder a todas las variables y constantes que tienen alcance en esta función
-        require 'templates/agregar_propiedad.phtml'; // Cambiado el nombre a lista_propiedades.phtml
+        $count = count($properties);
+        require 'templates/agregar_propiedad.phtml';
     }
 
-    public function viewDetails($property) // Cambiado de $tasks a $property
+    public function viewDetails($property)
     {
-        require_once 'templates/detalles_propiedades.phtml'; // Cambiado el nombre a detalles_propiedades.phtml
+        require_once 'templates/detalles_propiedades.phtml';
     }
 
-    public function showEdit($id, $propertyDetails, $property)
+    public function showEdit($id, $propertyDetails, $property, $owners)
     {
         require 'templates/form_edit_propierty.phtml';
     }
 
     public function showError($error)
     {
-        require 'templates/layout/header.phtml';
         require 'templates/error.phtml';
-        require 'templates/layout/footer.phtml';
     }
 
     public function showAlert($alert)
     {
-        require 'templates/layout/header.phtml';
         require 'templates/alert.phtml';
-        require 'templates/layout/footer.phtml';
     }
 }
