@@ -38,20 +38,20 @@ class PropertyModel
 
     public function getOwners()
     {
-        $query = $this->db->prepare('SELECT id,nombre,apellido FROM propietarios');
+        $query = $this->db->prepare('SELECT id,nombre,apellido,imagen FROM propietarios');
         $query->execute();
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
     public function getOwner($id)
     {
-        $query = $this->db->prepare('SELECT id,nombre, apellido FROM propietarios WHERE id = ?');
+        $query = $this->db->prepare('SELECT id,nombre, apellido, imagen FROM propietarios WHERE id = ?');
         $query->execute([$id]);
         return $query->fetch(PDO::FETCH_OBJ);
     }
 
     // Insertar una nueva propiedad en la base de datos
-    public function insertProperty($ubicacion, $m2, $modalidad, $id_propietario, $precio_inicial, $precio_flex)
+    public function insertProperty($ubicacion, $m2, $modalidad, $id_propietario, $precio_inicial, $precio_flex, $imagen)
     {
         $stmt = $this->db->prepare("SELECT COUNT(*) FROM propietarios WHERE id = :id_propietario");
         $stmt->execute(['id_propietario' => $id_propietario]);
@@ -59,9 +59,9 @@ class PropertyModel
             die('Error: El propietario no existe');
         }
         // Inserta una nueva propiedad con los campos necesarios
-        $query = $this->db->prepare('INSERT INTO propiedades (ubicacion, m2, modalidad, id_propietario, precio_inicial, precio_flex) 
-                                     VALUES (?, ?, ?, ?, ?, ?)');
-        $query->execute([$ubicacion, $m2, $modalidad, $id_propietario, $precio_inicial, $precio_flex]);
+        $query = $this->db->prepare('INSERT INTO propiedades (ubicacion, m2, modalidad, id_propietario, precio_inicial, precio_flex, imagen) 
+                                     VALUES (?, ?, ?, ?, ?, ?, ?)');
+        $query->execute([$ubicacion, $m2, $modalidad, $id_propietario, $precio_inicial, $precio_flex, $imagen]);
 
         // Obtiene el último ID insertado
         $id = $this->db->lastInsertId();
@@ -73,7 +73,7 @@ class PropertyModel
     public function getDetails($id)
     {
         // Consulta para obtener los detalles de la propiedad y su propietario
-        $stmt = $this->db->prepare('SELECT p.ubicacion, p.m2, p.modalidad, p.precio_inicial, p.precio_flex, 
+        $stmt = $this->db->prepare('SELECT p.ubicacion, p.m2, p.modalidad, p.precio_inicial, p.precio_flex, p.imagen, 
             pr.nombre, pr.apellido 
             FROM propiedades p 
             JOIN propietarios pr ON p.id_propietario = pr.id
@@ -92,11 +92,11 @@ class PropertyModel
     }
 
     // Actualizar una propiedad (aquí puedes ajustar los campos que desees actualizar)
-    public function updateProperty($ubicacion, $m2, $modalidad, $id_propietario, $precio_inicial, $precio_flex, $id)
+    public function updateProperty($ubicacion, $m2, $modalidad, $id_propietario, $precio_inicial, $precio_flex, $imagen, $id)
     {
         // Actualiza una propiedad con los datos proporcionados
 
-        $query = $this->db->prepare("UPDATE propiedades SET ubicacion = ?, m2 = ?, modalidad = ?, id_propietario = ?, precio_inicial = ?, precio_flex = ? WHERE id = ?");
-        $query->execute([$ubicacion, $m2, $modalidad, $id_propietario, $precio_inicial, $precio_flex, $id]);
+        $query = $this->db->prepare("UPDATE propiedades SET ubicacion = ?, m2 = ?, modalidad = ?, id_propietario = ?, precio_inicial = ?, precio_flex = ?, imagen = ? WHERE id = ?");
+        $query->execute([$ubicacion, $m2, $modalidad, $id_propietario, $precio_inicial, $precio_flex, $imagen, $id]);
     }
 }

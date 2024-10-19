@@ -9,10 +9,10 @@ detalles. Esta base de datos será luego expuesta y administrada vía web.
 # Inmobiliaria
 ## Tablas
 1.  **`propietarios`**  
-   Contiene propietarios de propiedades.
+   Contiene propietarios de propiedades (Categorías).
 
 2. **`propiedades`**  
-   Describe las propiedades, asociadas a `propietarios` con `id_propietario` y se actualizan automáticamente si el `id` de `propietario` cambia.
+   Describe las propiedades, asociadas a `propietarios` con `id_propietario` y se actualizan automáticamente si el `id` de `propietario` cambia (Elemento).
 
    
 ![](https://github.com/N1ckyto/Inmobiliaria_WEB2/blob/main/Inmobiliria_db.png)

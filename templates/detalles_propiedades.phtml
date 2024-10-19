@@ -5,18 +5,23 @@ $propiedad = $property; ?>
     <h1 class="text-center text-white">Detalles de la Propiedad</h1>
     <div class="card text-dark bg-light mb-3">
         <div class="card-header">Información de la Propiedad</div>
-        <div class="card-body">
-            <h5 class="card-title"><strong>Ubicación:</strong> <?php echo htmlspecialchars($propiedad->ubicacion); ?></h5>
-            <p class="card-text"><strong>Metros cuadrados:</strong> <?php echo htmlspecialchars($propiedad->m2); ?> m²</p>
-            <p class="card-text"><strong>Modalidad:</strong> <?php echo htmlspecialchars($propiedad->modalidad); ?></p>
-            <p class="card-text"><strong>Precio inicial:</strong> $<?php echo htmlspecialchars($propiedad->precio_inicial); ?></p>
-            <p class="card-text"><strong>Precio flexible:</strong> <?php echo $propiedad->precio_flex ? 'Sí' : 'No'; ?></p>
-            <p class="card-text"><strong>Propietario:</strong> <?php echo htmlspecialchars($propiedad->nombre . ' ' . $propiedad->apellido); ?></p>
-            <a href="propiedades" class="btn btn-success">Volver a la lista de propiedades</a>
-            <?php if ($this->user && $this->user->user <> NULL): ?>
-                <a href="agregar-modificarPropiedad" class="btn btn-danger">Seguir modificando propiedades</a>
-            <?php endif; ?>
-        </div>
+        <div class="d-flex">
+            <?php if (!empty($property->imagen)): ?>
+                <img src="<?= htmlspecialchars($property->imagen) ?>" alt="Imagen de la propiedad" class="img-fluid my-4 ms-4" style="height: 200px; width: 300px;">
+                <?php endif; ?>
+                <div class="card-body">
+                    <h5 class="card-title"><strong>Ubicación:</strong> <?php echo htmlspecialchars($propiedad->ubicacion); ?></h5>
+                    <p class="card-text"><strong>Metros cuadrados:</strong> <?php echo htmlspecialchars($propiedad->m2); ?> m²</p>
+                    <p class="card-text"><strong>Modalidad:</strong> <?php echo htmlspecialchars($propiedad->modalidad); ?></p>
+                    <p class="card-text"><strong>Precio inicial:</strong> $<?php echo htmlspecialchars($propiedad->precio_inicial); ?></p>
+                    <p class="card-text"><strong>Precio flexible:</strong> <?php echo $propiedad->precio_flex ? 'Sí' : 'No'; ?></p>
+                    <p class="card-text"><strong>Propietario:</strong> <?php echo htmlspecialchars($propiedad->nombre . ' ' . $propiedad->apellido); ?></p>
+                    <a href="propiedades" class="btn btn-success">Volver a la lista de propiedades</a>
+                    <?php if ($this->user && $this->user->user <> NULL): ?>
+                        <a href="agregar-modificarPropiedad" class="btn btn-danger">Seguir modificando propiedades</a>
+                        <?php endif; ?>
+                    </div>
+                </div>
     </div>
 </div>
 

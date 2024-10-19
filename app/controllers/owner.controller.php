@@ -51,13 +51,17 @@ class OwnerController
         if (!isset($_POST['apellido']) || empty($_POST['apellido'])) {
             return $this->view->showError('Falta completar el apellido');
         }
+        if (!isset($_POST['imagen']) || empty($_POST['imagen'])) {
+            return $this->view->showError('Falta completar la imagen');
+        }
 
 
         $nombre = $_POST['nombre'];
         $apellido = $_POST['apellido'];
+        $imagen = $_POST['imagen'];
 
 
-        $id = $this->model->insertOwner($nombre, $apellido);
+        $id = $this->model->insertOwner($nombre, $apellido, $imagen);
 
 
         $owners = $this->model->getOwners();
@@ -90,8 +94,9 @@ class OwnerController
         // Actualiza el propietario (puedes ajustar los campos a actualizar según tus necesidades)
         $nombre = $_POST['nombre'];
         $apellido = $_POST['apellido'];
+        $imagen = $_POST['imagen'];
 
-        $this->model->updateOwner($id, $nombre, $apellido);
+        $this->model->updateOwner($id, $nombre, $apellido, $imagen);
         return $this->view->showAlert("Propietario editado!");
     }
 

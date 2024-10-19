@@ -52,6 +52,10 @@ $id_propiedad = $id;
                 </select>
             </div>
         </div>
+        <div class="d-flex flex-column mb-3" >
+            <label for="imagen" class="form-label">Url Imagen</label>
+            <input type="text" class="form-control form-control-sm" id="imagen" name="imagen" value="<?php echo htmlspecialchars($property->imagen) ?>" required >
+        </div>
         <div class="d-grid">
             <button type="submit" class="btn btn-primary btn-sm mb-2">Editar</button>
             <a href="agregar-modificarPropiedad" class="btn btn-danger btn-sm">Modificar otra propiedad</a>

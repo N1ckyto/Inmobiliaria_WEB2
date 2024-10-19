@@ -6,6 +6,9 @@
             <?php foreach ($owners as $owner): ?>
                 <li class="rounded list-group-item my-2 bg-light px-3 py-1">
                     <div class="label text-center d-flex flex-column justify-content-center flex-wrap">
+                    <?php if (!empty($owner->imagen)): ?>
+                                <img src="<?= htmlspecialchars($owner->imagen) ?>" alt="Imagen del propietario" class="img-fluid my-2 px-3 rounded-circle " style="height: 100px; width: 125px;">
+                            <?php endif; ?>
                         <b><?= htmlspecialchars($owner->nombre) ?></b>
                         <b><?= htmlspecialchars($owner->apellido) ?></b>
                         <a href="detallePropietario/<?= $owner->id ?>" type="button" class='btn btn-success btn-sm ml-auto'>Ver más detalle</a>

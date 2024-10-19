@@ -1,5 +1,6 @@
 
 <div class="container mt-5 text-white" style="max-width: 500px;">
+    <h3 class="text-white mb-2">Agregar Propietario</h3>
     <form action="agregarPropietario" method="POST">
         <div class="row mb-3">
             <div class="col">
@@ -11,6 +12,10 @@
                 <input type="text" class="form-control form-control-sm" id="apellido" name="apellido" required>
             </div>
         </div>
+        <div class="d-flex flex-column mb-3" >
+            <label for="imagen" class="form-label">Url Imagen</label>
+            <input type="text" class="form-control form-control-sm" id="imagen" name="imagen" required>
+        </div>        
         <div class="d-grid">
             <button type="submit" class="btn btn-primary btn-sm">Agregar Propietario</button>
         </div>

@@ -1,5 +1,6 @@
 <!-- formulario de alta de tarea -->
 <div class="container mt-5 text-white" style="max-width: 500px;">
+    <h3 class="text-white mb-3">Agregar propiedad</h3>
     <form action="agregarPropiedad" method="POST">
         <div class="row mb-3">
             <div class="col">
@@ -17,12 +18,8 @@
                 <input type="text" class="form-control form-control-sm" id="m2" name="m2" required>
             </div>
             <div class="col">
-                <label for="precio_flexible" class="form-label">Precio Flexible</label>
-                <select required name="precio_flexible" class="form-control form-control-sm">
-                    <option value="">-</option>
-                    <option value="0">No</option>
-                    <option value="1">Si</option>
-                </select>
+                <label for="imagen" class="form-label">Url Imagen</label>
+                <input type="text" class="form-control form-control-sm" id="imagen" name="imagen" required>
             </div>
         </div>
         <div class="row mb-3">
@@ -45,6 +42,15 @@
                     <?php endforeach; ?>
                 </select>
             </div>
+            <div class="col">
+                <label for="precio_flexible" class="form-label">Precio Flexible</label>
+                <select required name="precio_flexible" class="form-control form-control-sm">
+                    <option value="">-</option>
+                    <option value="0">No</option>
+                    <option value="1">Si</option>
+                </select>
+            </div>
+            
         </div>
         <div class="d-grid">
             <button type="submit" class="btn btn-primary btn-sm">Agregar</button>

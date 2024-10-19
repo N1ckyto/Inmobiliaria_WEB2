@@ -6,15 +6,20 @@ $cantPropiedades = $properties; ?>
     <h1 class="text-center">Detalles del propietario</h1>
     <div class="card text-dark bg-light mb-3">
         <div class="card-header">Información del propietario</div>
-        <div class="card-body">
-            <h5 class="card-title"><strong>Nombre:</strong> <?php echo htmlspecialchars($propietario->nombre); ?></h5>
-            <h5 class="card-text"><strong>Apellido:</strong> <?php echo htmlspecialchars($propietario->apellido); ?> </h5>
-            <h5 class="card-title"><strong>Nº de propietario:</strong> <?php echo htmlspecialchars($propietario->id); ?></h5>
-            <h5 class="card-title"><strong>Cantidad de propiedades: <?php echo htmlspecialchars($cantPropiedades) ?> </h5>
-            <a href="propietarios" class="btn btn-success">Volver a la lista de propietarios</a>
-            <?php if ($this->user && $this->user->user <> NULL): ?>
-                <a href="agregar-modificarPropietario" class="btn btn-danger">Seguir modificando propietarios</a>
+        <div class="d-flex">
+            <?php if (!empty($owner->imagen)): ?>
+                <img src="<?= htmlspecialchars($owner->imagen) ?>" alt="Imagen del propietario" class="img-fluid mt-2 mb-3 mx-4 rounded-circle" style="height: 200px; width: 200px;">
             <?php endif; ?>
+            <div class="card-body mt-2">
+                <h5 class="card-title"><strong>Nombre:</strong> <?php echo htmlspecialchars($propietario->nombre); ?></h5>
+                <h5 class="card-text"><strong>Apellido:</strong> <?php echo htmlspecialchars($propietario->apellido); ?> </h5>
+                <h5 class="card-title"><strong>Nº de propietario:</strong> <?php echo htmlspecialchars($propietario->id); ?></h5>
+                <h5 class="card-title mb-5"><strong>Cantidad de propiedades: <?php echo htmlspecialchars($cantPropiedades) ?> </h5>
+                <a href="propietarios" class="btn btn-success">Volver a la lista de propietarios</a>
+                <?php if ($this->user && $this->user->user <> NULL): ?>
+                    <a href="agregar-modificarPropietario" class="btn btn-danger">Seguir modificando propietarios</a>
+                    <?php endif; ?>
+                </div>
         </div>
     </div>
 </div>
