@@ -1,10 +1,10 @@
-# TPE 2024 - Proyecto Inmobiliria-FN
+# TPE 2024 - Proyecto Inmobiliaria-FN
 
 # Desarolladores
 Escudero Nicolas - Barberia Facundo
 
 ## Descripción
-Este proyecto consiste en una base de datos para una inmobiliria. El objetivo es gestionar propiedades y propietarios que quieran mostrar sus viviendas a las personas. La base de datos está diseñada para facilitar la administración de las propiedades y las interacciones con los usuarios.
+Este proyecto consiste en una base de datos para una inmobiliaria. El objetivo es gestionar propiedades y propietarios que quieran mostrar sus viviendas a las personas. La base de datos está diseñada para facilitar la administración de las propiedades y las interacciones con los usuarios.
 
 # Explicacion de la Inmobiliaria
 ## Tablas
