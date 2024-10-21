@@ -121,6 +121,6 @@ switch ($params[0]) {
         $controller = new AuthController();
         $controller->logout();
     default:
-        echo "404 Page Not Found"; // deberiamos llamar a un controlador que maneje esto
+        echo "404 Page Not Found";
         break;
 }
